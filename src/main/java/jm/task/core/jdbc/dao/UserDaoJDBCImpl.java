@@ -15,8 +15,7 @@ public class UserDaoJDBCImpl implements UserDao {
     private static String CLEAN_TABLE = "DELETE FROM users ";
     private static String query = "SELECT * FROM users ";
 
-    public UserDaoJDBCImpl() {
-
+    public UserDaoJDBCImpl() { // default implementation ignored
     }
 
     public void createUsersTable() {
@@ -103,7 +102,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void cleanUsersTable() {
-        Util utilConnection =  new Util();
+        Util utilConnection = new Util();
         try (Connection connection = utilConnection.getConnection();
              Statement statement = connection.createStatement()) {
 

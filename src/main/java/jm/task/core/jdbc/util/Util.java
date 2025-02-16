@@ -21,7 +21,7 @@ public class Util {
 
     private static final SessionFactory sessionFactory;
 
-    public Util() {
+    public Util() throws RuntimeException {
         try {
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
@@ -36,12 +36,10 @@ public class Util {
 
     static {
         try {
-            // Создаем StandardServiceRegistry
             StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                     .applySettings(getHibernateProperties())
                     .build();
 
-            // Создаем SessionFactory
             sessionFactory = new MetadataSources(registry)
                     .addAnnotatedClass(User.class) // Добавляем сущность User
                     .buildMetadata()
